@@ -1,8 +1,8 @@
 -- % cabal install hspec
 -- % runghc <this_file>
 
-import Nat
-import Small
+import           Nat
+import           Small
 
 main :: IO ()
 main = hspec $ do

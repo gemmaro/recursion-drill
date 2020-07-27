@@ -59,10 +59,15 @@ my_gcd a b
     c = a - b
 
 my_gcd_fast :: Integer -> Integer -> Integer
-my_gcd_fast = undefined
+my_gcd_fast a 0 = a
+my_gcd_fast a b
+  | c >= b = my_gcd_fast c b
+  | otherwise = my_gcd_fast b c
+  where
+      c = a `mod` b
 
 my_lcm_fast :: Integer -> Integer -> Integer
-my_lcm_fast = undefined
+my_lcm_fast a b = (a * b) `div` my_gcd_fast a b
 
 ----------------------------------------------------------------
 
@@ -73,8 +78,10 @@ my_power m n = my_power m (n - 1) * m
 my_power_fast :: Integer -> Integer -> Integer
 my_power_fast _ 0 = 1
 my_power_fast m n
-  | odd n     = my_power_fast undefined undefined * m
-  | otherwise = my_power_fast undefined undefined
+  | odd n     = p * m
+  | otherwise = p
+  where
+      p = my_power_fast (m ^ 2) (n `div` 2)
 
 my_power_iter :: Integer -> Integer -> Integer
 my_power_iter x y = iter x y 1
@@ -89,8 +96,8 @@ my_power_fast_iter x y = iter x y 1
     iter :: Integer -> Integer -> Integer -> Integer
     iter _ 0 acc = acc
     iter m n acc
-      | odd n     = iter undefined undefined undefined
-      | otherwise = iter undefined undefined undefined
+      | odd n     = iter (m ^ 2) (n `div` 2) (acc * m)
+      | otherwise = iter (m ^ 2) (n `div` 2) acc
 
 ----------------------------------------------------------------
 
