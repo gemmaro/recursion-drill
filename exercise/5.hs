@@ -60,11 +60,7 @@ my_gcd a b
 
 my_gcd_fast :: Integer -> Integer -> Integer
 my_gcd_fast a 0 = a
-my_gcd_fast a b
-  | c >= b = my_gcd_fast c b
-  | otherwise = my_gcd_fast b c
-  where
-      c = a `mod` b
+my_gcd_fast a b = my_gcd_fast b (a `mod` b)
 
 my_lcm_fast :: Integer -> Integer -> Integer
 my_lcm_fast a b = (a * b) `div` my_gcd_fast a b
