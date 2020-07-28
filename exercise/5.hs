@@ -133,9 +133,8 @@ my_odd_m n = my_even_m (n - 1)
 
 my_even_m2 :: Integer -> Bool
 my_even_m2 0 = True
-my_even_m2 n = not $ my_odd_m2 n
+my_even_m2 n = my_odd_m2 $ n - 1
 
 my_odd_m2 :: Integer -> Bool
-my_odd_m2 0 = False
 my_odd_m2 1 = True
-my_odd_m2 n = my_even_m2 (n - 1)
+my_odd_m2 n = not $ my_even_m2 n
