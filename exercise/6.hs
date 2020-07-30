@@ -62,8 +62,8 @@ my_catalan x = my_cat x x
 my_cat :: Integer -> Integer -> Integer
 my_cat _ 0 = 1
 my_cat m n
-  | m == n    = undefined
-  | otherwise = undefined
+  | m == n    = my_cat m (n - 1)
+  | otherwise = my_cat m (n - 1) + my_cat (m - 1) n
 
 ----------------------------------------------------------------
 
