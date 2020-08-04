@@ -71,8 +71,8 @@ my_catalan2 :: Integer -> Integer
 my_catalan2 0 = 1
 my_catalan2 n = sum (zipWith (*) xs ys)
   where
-    xs = undefined
-    ys = undefined
+    xs = map my_catalan2 [0 .. (n - 1)]
+    ys = map my_catalan2 (reverse [0 .. (n - 1)])
 
 ----------------------------------------------------------------
 
