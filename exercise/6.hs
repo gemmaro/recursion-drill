@@ -81,4 +81,4 @@ my_coin 0 _   = 1
 my_coin _ []  = 0
 my_coin n (c:cs)
   | n < 0     = 0
-  | otherwise = undefined
+  | otherwise = my_coin (n - c) (c:cs) + my_coin n cs
