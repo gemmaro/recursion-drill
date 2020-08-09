@@ -130,10 +130,13 @@ my_catalan_memo :: Integer -> Integer
 my_catalan_memo n = my_cat_memo n n
 
 my_cat_memo :: Integer -> Integer -> Integer
-my_cat_memo = undefined
+my_cat_memo = memoize my_cat
 
 my_cat :: Integer -> Integer -> Integer
-my_cat = undefined
+my_cat _ 0 = 1
+my_cat m n
+  | m == n = my_cat m (n - 1)
+  | otherwise = my_cat m (n - 1) + my_cat (m - 1) n
 
 ----------------------------------------------------------------
 
