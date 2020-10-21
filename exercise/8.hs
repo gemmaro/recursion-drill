@@ -166,10 +166,14 @@ my_and_iter (x:xs)
   | otherwise  = False
 
 my_or :: [Bool] -> Bool
-my_or = undefined
+my_or [] = False
+my_or (x:xs) = x || my_or xs
 
 my_or_iter :: [Bool] -> Bool
-my_or_iter = undefined
+my_or_iter [] = False
+my_or_iter (x:xs)
+  | x = True
+  | otherwise = my_or_iter xs
 
 my_all :: (a -> Bool) -> [a] -> Bool
 my_all = undefined
