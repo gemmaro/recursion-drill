@@ -98,7 +98,8 @@ my_length_iter as = iter as 0
 ----------------------------------------------------------------
 
 my_sum :: [Integer] -> Integer
-my_sum = undefined
+my_sum [] = 0
+my_sum (x:xs) = x + my_sum xs
 
 my_sum_iter :: [Integer] -> Integer
 my_sum_iter as = iter as undefined
