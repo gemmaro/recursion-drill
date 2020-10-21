@@ -107,7 +107,8 @@ my_sum_iter as = iter as undefined
     iter = undefined
 
 my_product :: [Integer] -> Integer
-my_product = undefined
+my_product [] = 1
+my_product (x:xs) = x * my_product xs
 
 my_product_iter :: [Integer] -> Integer
 my_product_iter as = iter as undefined
