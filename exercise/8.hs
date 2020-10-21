@@ -102,18 +102,22 @@ my_sum [] = 0
 my_sum (x:xs) = x + my_sum xs
 
 my_sum_iter :: [Integer] -> Integer
-my_sum_iter as = iter as undefined
+my_sum_iter as = iter as 0
   where
-    iter = undefined
+    iter :: [Integer] -> Integer -> Integer
+    iter [] y = y
+    iter (x:xs) y = iter xs (y + x)
 
 my_product :: [Integer] -> Integer
 my_product [] = 1
 my_product (x:xs) = x * my_product xs
 
 my_product_iter :: [Integer] -> Integer
-my_product_iter as = iter as undefined
+my_product_iter as = iter as 1
   where
-    iter = undefined
+    iter :: [Integer] -> Integer -> Integer
+    iter [] y = y
+    iter (x:xs) y = iter xs (y * x)
 
 ----------------------------------------------------------------
 
