@@ -124,24 +124,28 @@ my_product_iter as = iter as 1
 my_maximum :: Ord a => [a] -> a
 my_maximum []  = error "my_maximum"
 my_maximum [x] = x
-my_maximum (x:xs) = undefined
+my_maximum (x:xs) = max x (my_maximum xs)
 
 my_maximum_iter :: Ord a => [a] -> a
 my_maximum_iter []  = error "my_maximum_iter"
-my_maximum_iter (a:as) = iter undefined undefined
+my_maximum_iter (a:as) = iter as a
   where
-    iter = undefined
+    iter :: Ord a => [a] -> a -> a
+    iter [] y = y
+    iter (x:xs) y = iter xs (max x y)
 
 my_minimum :: Ord a => [a] -> a
 my_minimum []  = error "my_minimum"
 my_minimum [x] = x
-my_minimum (x:xs) = undefined
+my_minimum (x:xs) = min x (my_minimum xs)
 
 my_minimum_iter :: Ord a => [a] -> a
 my_minimum_iter []  = error "my_minimum_iter"
-my_minimum_iter (a:as) = iter undefined undefined
+my_minimum_iter (a:as) = iter as a
   where
-    iter = undefined
+    iter :: Ord a => [a] -> a -> a
+    iter [] y = y
+    iter (x:xs) y = iter xs (min x y)
 
 ----------------------------------------------------------------
 
