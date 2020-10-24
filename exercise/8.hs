@@ -194,17 +194,23 @@ my_elem k (x:xs)
   | otherwise = my_elem k xs
 
 my_find :: (a -> Bool) -> [a] -> Maybe a
-my_find = undefined
+my_find _ [] = Nothing
+my_find p (x:xs)
+  | p x = Just x
+  | otherwise = my_find p xs
 
 my_lookup :: Eq k => k -> [(k,v)] -> Maybe v
-my_lookup = undefined
+my_lookup _ [] = Nothing
+my_lookup k ((k', v):xs)
+  | k == k' = Just v
+  | otherwise = my_lookup k xs
 
 ----------------------------------------------------------------
 
 my_foldr :: (a -> b -> b) -> b -> [a] -> b
 my_foldr _ ini []     = ini
-my_foldr f ini (x:xs) = undefined
+my_foldr f ini (x:xs) = my_foldr f (f x ini) xs
 
 my_foldl :: (a -> b -> a) -> a -> [b] -> a
 my_foldl _ acc []     = acc
-my_foldl f acc (x:xs) = undefined
+my_foldl f acc (x:xs) = my_foldl f (f acc x) xs
